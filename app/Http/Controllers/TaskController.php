@@ -34,7 +34,8 @@ class TaskController extends Controller
        
        $user->save();
        
-       return redirect()->back();
+       return redirect()->back()->with('success', 'Task Successfully Asigned');
+
     }
     public function desk(){
        $projects = Task::all();
@@ -46,7 +47,8 @@ class TaskController extends Controller
     }
    public function deskstore(Request $request){
     Task::create($request->all()); 
-    return redirect()->back();
+    return redirect()->back()->with('success','Project Successfully assigned');
 }
+
    }
 

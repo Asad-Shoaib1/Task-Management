@@ -134,6 +134,10 @@ class ProfileController extends Controller
         return view('user-profile',compact('user'));
 
     }
+    public function employee(){
+        $user = User::all();
+        return view('page-employee',compact('user'));
+    }
 
     
        

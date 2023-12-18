@@ -1,6 +1,11 @@
 @include('/layouts.header')
 @include('/layouts.sidebar')
 <div class="content-page">
+    <div class="alert alert-success">{{Session::get('success')}}</div>
+                            
+    @if(Session::has('fail'))
+    <div class="alert alert-danger">{{Session::get('fail')}}</div>
+    @endif
      <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">

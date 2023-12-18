@@ -50,7 +50,7 @@
                            <th>Country</th>
                            <th>Status</th>
                            <th>Company</th>
-                           <th>Join Date</th>
+                           <th>Contact no</th>
                            <th style="min-width: 100px">Action</th>
                         </tr>
                      </thead>
@@ -62,10 +62,11 @@
                            <td>{{$user->name}}</td>
                            <td>{{$user->lastname}}</td>
                            <td>{{$user->email}}</td>
-                           <td>{{$user->country}}</td>   
+                           <td>{{$user->country}}</td>  
+                           
                          <td><span class="badge bg-primary">Active</span></td>
                          <td>{{$user->companyname}}</td>
-                           <td>2019/12/01</td>
+                           <td>{{$user->phoneno}}</td>
                            <td>
                               <div class="flex align-items-center list-user-action">
                                  <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""

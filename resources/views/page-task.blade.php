@@ -51,7 +51,7 @@
                                                  <div>
                                                     {{-- {{ $member->id }}">{{ $member->name }} --}}
                                                    
-                                                     <h5 class="mb-2">{{$task->taskname}} helllooo</h5>
+                                                     <h5 class="mb-2">{{$task->taskname}} </h5>
                                                     <div class="media align-items-center">
                                                         <div class="btn bg-body mr-3"><i class="ri-align-justify mr-2"></i>5/10</div>
                                                         <div class="btn bg-body"><i class="ri-survey-line mr-2"></i>3</div> 

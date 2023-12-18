@@ -3,6 +3,7 @@
 @include('/layouts.header')
 @include('/layouts.sidebar')
    <div class="content-page">
+   
      <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
