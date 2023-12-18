@@ -16,46 +16,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('page-employee');
+    return view('log-in');
 });
-/*->middleware(['auth', 'verified'])*/
-
-// Route::prefix('user')->group(function(){
     Route::controller(App\Http\Controllers\ProfileController::class)->group(function(){
+        // Route::prefix('users')->group(function () {
         Route::get('/dashboard','index')->name('dashboard')->middleware(['auth','verified']);
-        Route::get('/user-list','list') ->name('user-list');
-        Route::get('/user-add',  'registeruser') ->name('user-add');
-        Route::post('/user-add',  'storeuser') ->name('user-add');
-        Route::get('/user-edit/{id}','edituser');
-        Route::post('/user-edit/{id}','updateuser');
-        Route::get('/project',  'project')->name('project');
-        Route::get('/profile','profile')->name('user.profile');
-        Route::get('/employee','employee')->name('employee');
+        Route::get('/user-list','list') ->name('user-list')->middleware(['auth','verified']);
+        Route::get('/user-add',  'registeruser') ->name('user-add')->middleware(['auth','verified']);
+        Route::post('/user-add',  'storeuser') ->name('user-add')->middleware(['auth','verified']);
+        Route::get('/user-edit/{id}','edituser')->middleware(['auth','verified']);
+        Route::post('/user-edit/{id}','updateuser')->middleware(['auth','verified']);
+        Route::get('/project',  'project')->name('project')->middleware(['auth','verified']);
+        Route::get('/profile','profile')->name('user.profile')->middleware(['auth','verified']);
+        Route::get('/employee','employee')->name('employee')->middleware(['auth','verified']);
         
         
- Route::get('logout',  'logout') ->name('logout');
- Route::get('/delete/{id}',  'destroy')->name('delete');
+ Route::get('logout',  'logout') ->name('logout')->middleware(['auth','verified']);
+ Route::get('/delete/{id}',  'destroy')->name('delete')->middleware(['auth','verified']);
+   
 });
     
 
-Route::get('/desk',[TaskController::class,'desk'])->name('desk');
-Route::Post('/desk',[TaskController::class,'deskstore'])->name('create.project');
+Route::get('/desk',[TaskController::class,'desk'])->name('desk')->middleware(['auth','verified']);
+Route::Post('/desk',[TaskController::class,'deskstore'])->name('create.project')->middleware(['auth','verified']);
 
-Route::get('/task/create',[TaskController::class,'createtask'])->name('create.task');
-Route::post('/task/creates',[TaskController::class,'taskstore'])->name('store');
-
-
-
-// });
-
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile',  'edit'])->name('profile.edit');
-//  Route::patch('/profile',[Profilecontroller::class, 'update'])->name('profile.update');
- 
-//     Route::delete('/profile',  'destroy'])->name('profile.destroy');
-// });
-
+Route::get('/task/create',[TaskController::class,'createtask'])->name('create.task')->middleware(['auth','verified']);
+Route::post('/task/creates',[TaskController::class,'taskstore'])->name('store')->middleware(['auth','verified']);
 
 Route::middleware(['auth'])->group(function () {
 
