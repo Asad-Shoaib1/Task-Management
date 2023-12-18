@@ -571,7 +571,9 @@
                     <h3 class="modal-title" id="exampleModalCenterTitle01">New Project</h3>
                 </div>
                 <form action="{{route('create.project')}}" method="POST">
+                   
                     @csrf
+                    
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-12">

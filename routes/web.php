@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('auth.login');
+    return view('user-account-setting');
 });
 /*->middleware(['auth', 'verified'])*/
 
@@ -29,6 +29,7 @@ Route::get('/',function(){
         Route::get('/user-edit/{id}','edituser');
         Route::post('/user-edit/{id}','updateuser');
         Route::get('/project',  'project')->name('project');
+        Route::get('/profile','profile')->name('user.profile');
         
         
  Route::get('logout',  'logout') ->name('logout');

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('repeatpassword');
             $table->string('user_type')->default('user')->nullable();
             $table->rememberToken();
             $table->timestamps();
@@ -29,7 +30,8 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('username')->nullable();
             $table->string('pincode')->nullable();
-            
+          
+            $table->date('due_date')->nullable();
         });
     }
 

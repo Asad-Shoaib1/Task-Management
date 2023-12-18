@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div> @foreach($projects as $project)
-        <div id="grid" class="item-content animate__animated animate__fadeIn active" data-toggle-extra="tab-content">
+        <div id="grid" class="item-content animate__animated animate__fadeIn active" {{$project->taskname}}data-toggle-extra="tab-content">
           <div class="row">
             <div class="col-lg-4 col-md-6">
                
@@ -58,7 +58,7 @@
                                 <i class="ri-star-fill m-0 text-warning"></i>
                             </div>
                             <h5 class="mb-1">{{$project->project_name}}</h5>
-                            <p class="mb-3">Preparing framework of block-based WordPress Theme.</p>
+                            <p class="mb-3">{{$project->project_name}}.</p>
                             <div class="d-flex align-items-center justify-content-between pt-3 border-top">
                                 <div class="iq-media-group">
                                     <a href="#" class="iq-media">
@@ -247,7 +247,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 text-sm-right mt-3 mt-sm-0">
+                                <div class="col-sm-4 text-sm-right mt-3 mt-sm-0"> 
                                     <div class="iq-media-group">
                                         <a href="#" class="iq-media">
                                             <img class="img-fluid avatar-40 rounded-circle" src="../assets/images/user/07.jpg" alt="">
@@ -497,8 +497,13 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group mb-3">
-                                <label for="exampleInputText07" class="h5">Assign Members*</label>
-                                <input type="text" class="form-control" id="exampleInputText07">
+                               
+                                <label for="exampleInputText07" class="h5">Assigns Members*</label>
+                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                    @foreach($members as $member)  <option>{{$member->name}}</option>@endforeach
+                                    
+                                </select>
+                                {{-- <input type="text" class="form-control" id="exampleInputText07"> --}}
                             </div>
                         </div>
                         <div class="col-lg-12">

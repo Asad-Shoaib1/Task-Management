@@ -22,17 +22,19 @@ class ProfileController extends Controller
     
              return redirect('/login');
   }
-  public function project(){
+
+
+  public function project()
+  {
     $projects = Task::all();
     $members = User ::all();
  $projects= Task::where('assignedto',Auth::id())->get();
- //   dd($tasks);
-    //  return view('page-task',compact('projects','members'));
      return view('page-project',compact('projects','members'));
     
 }
 
-  public function show(){
+  public function show()
+  {
     return view('edit-profile');
   }
     
@@ -57,36 +59,20 @@ class ProfileController extends Controller
        return redirect('user-list');
      }
      public function index(){
-    //  if (Gate::allows('update-post')) {
-    //         abort(403);
-    //      }
+
 
         return view('/dashboard');
      }
-    /**
-     * Update the user's profile information.
-     */
-    // public function update(ProfileUpdateRequest $request): RedirectResponse
-    // {
-    //     $request->user()->fill($request->validated());
-
-    //     if ($request->user()->isDirty('email')) {
-    //         $request->user()->email_verified_at = null;
-    //     }
-
-    //     $request->user()->save();
-
-    //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
-    // }
-
     
-    public function list(){
+    public function list()
+    {
         
         $users = User::all();
         return view('user-list',['users'=>$users]);   
         
     }
-    public function registeruser(){
+    public function registeruser()
+    {
         return view('user-add');
     }
     public function storeuser(Request $request){
@@ -100,13 +86,6 @@ class ProfileController extends Controller
                 'repeatpassword'=>'required'
             ]);
     
-            // DB::table('users')->insert([
-            //     'firstname'=>$request->firstname,
-            //     'lastname'=>$request->lastname,
-            //     'email'=>$request->email,
-            //     'password'=>$request->password,
-            //     'confirmpassword'=>$request->confirmpassword
-            // ]);
     
             $user = new User;
             $user->name = $request->firstname;
@@ -125,7 +104,7 @@ class ProfileController extends Controller
             $user->repeatpassword = $request->repeatpassword;
             
             $user->save();
-            // $user->save();
+           
     
             return back()->with('success', 'Registration successfully done');
         } 
@@ -135,14 +114,6 @@ class ProfileController extends Controller
 
         public function editprofile(){
             return view('profile-update');
-            // $user = Auth::user();
-            // $user->name = 'admin';
-            //  $user->email = 'admin@gmail.com';
-            // // Update other fields as needed
-            // $user->save();
-
-           
-            
         }
         public function update(Request $request)
     {
@@ -153,12 +124,15 @@ class ProfileController extends Controller
         $user->phoneno = $request->input('phoneno');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
-        
-        // Update other fields as needed
 
         $user->save();
 
         return back()->with('status', 'Profile updated!');
+    }
+    public function profile(){
+        $user = DB::table('users')->where('id',Auth::id())->get();
+        return view('user-profile',compact('user'));
+
     }
 
     
