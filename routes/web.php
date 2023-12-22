@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('log-in');
+    return view('auth.login');
 });
     Route::controller(App\Http\Controllers\ProfileController::class)->group(function(){
         // Route::prefix('users')->group(function () {
